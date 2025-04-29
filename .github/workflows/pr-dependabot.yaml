@@ -24,7 +24,7 @@ jobs:
       id: vars
       run: echo "go_version=$(make go-version)" >> $GITHUB_OUTPUT
     - name: Set up Go
-      uses: actions/setup-go@v3 # tag=v5.0.0
+      uses: actions/setup-go@v3
       with:
         go-version: '1.23'
     # - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # tag=v4.2.3
@@ -37,28 +37,22 @@ jobs:
     #     restore-keys: |
     #       ${{ runner.os }}-go-
     - name: Update go modules for proto
-      with:
-        workdir: 'proto'
+      working-directory: './proto'
       run: go mod tidy
     - name: Update go modules for experimental
-      with:
-        workdir: 'experimental'
+      working-directory: './experimental'
       run: go mod tidy
     - name: Update go modules for kubectl plugin
-      with:
-        workdir: 'kubectl-plugin'
+      working-directory: './kubectl-plugin'
       run: go mod tidy
     - name: Update go modules for apiserver
-      with:
-        workdir: 'apiserver'
+      working-directory: './apiserver'
       run: go mod tidy
     - name: Update go modules for ray operator
-      with:
-        workdir: 'ray-operator'
+      working-directory: './ray-operator'
       run: go mod tidy
     - name: Update generated code
-      with:
-        workdir: 'ray-operator'
+      working-directory: './ray-operator'
       run: ./hack/update-codegen.sh
     - uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # tag=v9.1.4
       name: Commit changes
