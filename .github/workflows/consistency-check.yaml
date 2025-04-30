@@ -2,12 +2,11 @@ name: operator-consistency-check
 
 on:
   push:
-    types: [opened, edited, synchronize, reopened]
     branches:
     - master
     - release-*
+    - dependabot/**
   pull_request:
-    types: [opened, edited, synchronize, reopened]
     branches:
     - master
     - release-*
