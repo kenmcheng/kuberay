@@ -7,9 +7,10 @@ on:
     - release-*
     - dependabot/**
   pull_request:
-    branches:
-    - master
-    - release-*
+    types: [opened, edited, synchronize, reopened]
+    # branches:
+    # - master
+    # - release-*
 
 jobs:
   # Check consistency between types.go and generated API.
