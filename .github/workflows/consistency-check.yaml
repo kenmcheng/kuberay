@@ -2,6 +2,7 @@ name: operator-consistency-check
 
 on:
   push:
+    types: [opened, edited, synchronize, reopened]
     branches:
     - master
     - release-*
