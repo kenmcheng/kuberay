@@ -62,7 +62,7 @@ jobs:
     #     default_author: github_actor
     #     message: 'Update generated code'
     - name: commit and push the changes
-      run:|
+      run: |
         if ! git diff --exit-code; then
               git config user.name "$(git log -1 --pretty=%an)"
               git config user.email "$(git log -1 --pretty=%ae)"
