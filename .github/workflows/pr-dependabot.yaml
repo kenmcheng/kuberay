@@ -1,4 +1,4 @@
-name: code generation and module fix for PR from dependabot
+name: code generation and module version fix for PR from dependabot
 
 # This action runs on other PRs opened by dependabot. It updates modules and generated code on PRs opened by dependabot.
 on:
@@ -54,10 +54,21 @@ jobs:
     - name: Update generated code
       working-directory: './ray-operator'
       run: ./hack/update-codegen.sh
-    - uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # tag=v9.1.4
-      name: Commit changes
-      with:
-        author_name: dependabot[bot]
-        author_email: 49699333+dependabot[bot]@users.noreply.github.com
-        default_author: github_actor
-        message: 'Update generated code'
+    # - uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # tag=v9.1.4
+    #   name: Commit changes
+    #   with:
+    #     author_name: dependabot[bot]
+    #     author_email: 49699333+dependabot[bot]@users.noreply.github.com
+    #     default_author: github_actor
+    #     message: 'Update generated code'
+    - name: commit and push the changes
+      run:|
+        if ! git diff --exit-code; then
+              git config user.name "$(git log -1 --pretty=%an)"
+              git config user.email "$(git log -1 --pretty=%ae)"
+              git add .
+              git commit -m "Update generated code and module versions"
+              git push
+        else
+              echo "No changes to commit"
+        fi
