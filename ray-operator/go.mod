@@ -34,6 +34,8 @@ require (
 	sigs.k8s.io/structured-merge-diff/v4 v4.6.0
 	sigs.k8s.io/yaml v1.4.0
 	volcano.sh/apis v1.11.0
+	github.com/goccy/go-yaml v1.17.0
+	urfave/cli/v3 v3.3.0
 )
 
 replace go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.35.1 => go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.44.0

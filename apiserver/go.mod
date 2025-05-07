@@ -16,6 +16,8 @@ require (
 	k8s.io/apimachinery v0.33.0
 	k8s.io/client-go v0.33.0
 	k8s.io/klog/v2 v2.130.1
+	github.com/goccy/go-yaml v1.17.0
+	urfave/cli/v3 v3.3.0
 )
 
 require (

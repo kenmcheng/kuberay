@@ -9,6 +9,8 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20250303144028-a0af3efb3deb
 	google.golang.org/grpc v1.72.0
 	google.golang.org/protobuf v1.36.6
+	github.com/goccy/go-yaml v1.17.0
+	urfave/cli/v3 v3.3.0
 )
 
 require (
